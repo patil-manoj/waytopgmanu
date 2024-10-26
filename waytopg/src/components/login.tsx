@@ -27,7 +27,7 @@ const LoginPage: React.FC = () => {
         localStorage.setItem('userRole', data.role);
         switch (data.role) {
           case 'student':
-            navigate('/user-dashboard');
+            navigate('/');
             break;
           case 'owner':
             navigate('/owner-dashboard');
@@ -83,7 +83,7 @@ const LoginPage: React.FC = () => {
                           focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="role" className="block text-sm font-medium text-gray-700">I am a:</label>
               <select
                 id="role"
@@ -96,7 +96,7 @@ const LoginPage: React.FC = () => {
                 <option value="owner">Accommodation Owner</option>
                 <option value="admin">Administrator</option>
               </select>
-            </div>
+            </div> */}
             <Button type="submit" variant="primary" size="large" className="w-full">
               Login
             </Button>

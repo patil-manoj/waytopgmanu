@@ -6,6 +6,9 @@ import AdminLoginPage from './components/adminloginpage';
 import OwnerLoginPage from './components/ownerloginpage';
 import AdminDashboard from './components/admindashboard';
 import OwnerDashboard from './components/ownerdashboard';
+import UserDashboard from './components/userdashboard';
+import AccommodationListPage from './components/accommodationlistpage';
+import AccommodationDetailPage from './components/accommodationdetailpage';
 
 function App() {
 
@@ -21,7 +24,9 @@ function App() {
         {/* <Route path="/add-accommodation" element={<AddAccommodationPage />} /> */}
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/owner-dashboard" element={<OwnerDashboard />} />
-        {/* <Route path="/user-dashboard" element={<UserDashboard />} /> */}
+        <Route path="/user-dashboard" element={<UserDashboard />} />
+        <Route path="/accommodations" element={<AccommodationListPage />} />
+        <Route path="/accommodation/:id" element={<AccommodationDetailPage />} />
       </Routes>
     </Router>
     </>
