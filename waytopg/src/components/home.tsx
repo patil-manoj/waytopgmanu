@@ -5,6 +5,7 @@ import { Search, MapPin, Star, ArrowRight } from 'lucide-react';
 import Footer from './Footer';
 import Button from './Button';
 import Navbar from './navbar';
+import { useNavigate } from 'react-router-dom';
 
 const featuredAccommodations = [
   { id: 1, name: "Emerald Heights", location: "Near University", rating: 4.8, image: "/placeholder.svg?height=200&width=300" },
@@ -13,6 +14,11 @@ const featuredAccommodations = [
 ];
 
 const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+
+    const handleclick = () => {
+        navigate('/accommodations');
+    };
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white flex flex-col">
       <Navbar />
@@ -66,7 +72,7 @@ const HomePage: React.FC = () => {
           <div className="container mx-auto px-4 text-center">
             <h3 className="text-4xl font-bold mb-6 text-gray-800">Ready to Find Your Eco-Friendly Home?</h3>
             <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">Browse our extensive list of sustainable student accommodations and find the perfect match for you and the planet.</p>
-            <Button variant="primary" size="large" className="inline-flex items-center">
+            <Button variant="primary" size="large" onClick={handleclick}  className="inline-flex items-center">
               View All Listings
               <ArrowRight className="w-6 h-6 ml-2" />
             </Button>

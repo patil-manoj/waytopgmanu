@@ -35,8 +35,7 @@ export function Navbar() {
 
   const navItems = isAuthenticated
     ? [
-        { to: '/', label: 'Home', icon: Home },
-        { to: '/listings', label: 'Listings', icon: Search },
+        { to: '/accommodations', label: 'Listings', icon: Search },
         // { to: '/bookings', label: 'My Bookings', icon: Building },
         { to: '/user-dashboard', label: 'Profile', icon: User },
       ]
@@ -52,7 +51,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold text-green-600 flex items-center">
-            EcoStay
+            Way2pg
           </Link>
           <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (

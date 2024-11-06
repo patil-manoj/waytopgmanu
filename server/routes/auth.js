@@ -1,28 +1,46 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import { body, validationResult } from 'express-validator';
+import rateLimit from 'express-rate-limit';
 import User from '../models/user.js';
 
 const router = express.Router();
 
-// router.post('/signup', async (req, res) => {
-//   try {
-//     const { name, email, password, role, companyName } = req.body;
-//     const user = new User({ name, email, password, role, companyName });
-//     await user.save();
-    
-//     const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET );
-//     res.status(201).json({ token, role: user.role });
-//   } catch (error) {
-//     res.status(400).json({ message: 'Error creating user' });
-//   }
-// });
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+});
 
+router.use(limiter);
 
-router.post('/signup', async (req, res) => {
+// Validation middleware
+const validateSignup = [
+  body('name').trim().isLength({ min: 2 }).escape(),
+  body('email').isEmail().normalizeEmail(),
+  body('password').isLength({ min: 6 }),
+  body('role').isIn(['student', 'owner', 'admin']),
+  body('companyName').if(body('role').equals('owner')).notEmpty(),
+  body('businessRegistration').if(body('role').equals('owner')).notEmpty(),
+  body('adminCode').if(body('role').equals('admin')).notEmpty(),
+];
+
+const validateLogin = [
+  body('email').isEmail().normalizeEmail(),
+  body('password').notEmpty(),
+  body('role').isIn(['student', 'owner', 'admin']),
+];
+
+router.post('/signup', validateSignup, async (req, res) => {
   try {
-    const { name, email, password, role, companyName, businessRegistration, adminCode } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
+    const { name, email, password, role, companyName, businessRegistration, adminCode } = req.body;
+    console.log(companyName);
     // Check if email already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -42,53 +60,45 @@ router.post('/signup', async (req, res) => {
       }
     }
 
+    // Hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
     // Create new user
     const user = new User({
       name,
       email,
-      password,
+      password: hashedPassword,
       role,
       companyName: role === 'owner' ? companyName : undefined,
       businessRegistration: role === 'owner' ? businessRegistration : undefined,
     });
+    // console.log('done1');
 
     await user.save();
     
-    const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET);
+    // console.log('done2');
+    const token = jwt.sign(
+      { userId: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+    // console.log('done3');
     res.status(201).json({ token, role: user.role });
+    // console.log('done4');
   } catch (error) {
     console.error('Signup error:', error);
     res.status(500).json({ message: 'Error creating user' });
   }
 });
 
-// router.post('/login', async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-//     const user = await User.findOne({ email });
-//     if (!user) {
-//       return res.status(401).json({ message: 'Invalid credentials' });
-//     }
-    
-//     const isMatch = await bcrypt.compare(password, user.password);
-//     if (!isMatch) {
-//       return res.status(401).json({ message: 'Invalid credentials' });
-//     }
-    
-//     if (user.role === 'owner' && !user.isApproved) {
-//       return res.status(403).json({ message: 'Your account is pending approval' });
-//     }
-    
-//     const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET );
-//     res.json({ token, role: user.role });
-//   } catch (error) {
-//     res.status(400).json({ message: 'Error logging in' });
-//   }
-// });
-
-
-router.post('/login', async (req, res) => {
+router.post('/login', validateLogin, async (req, res) => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
     const { email, password, role } = req.body;
     const user = await User.findOne({ email, role });
     if (!user) {
@@ -104,7 +114,11 @@ router.post('/login', async (req, res) => {
       return res.status(403).json({ message: 'Your account is pending approval' });
     }
     
-    const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET );
+    const token = jwt.sign(
+      { userId: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
     res.json({ token, role: user.role });
   } catch (error) {
     console.error('Login error:', error);
