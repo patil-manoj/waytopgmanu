@@ -19,7 +19,7 @@ const AdminDashboard: React.FC = () => {
     const fetchUsers = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:5000/api/admin/users', {
+        const response = await fetch('https://waytopg.netlify.app//api/admin/users', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
