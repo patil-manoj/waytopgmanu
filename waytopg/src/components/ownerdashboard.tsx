@@ -21,7 +21,7 @@ const OwnerDashboard: React.FC = () => {
     const fetchAccommodations = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('https://waytopg.netlify.app//api/owner/accommodations', {
+        const response = await fetch('https://waytopg-backend.onrender.com/api/owner/accommodations', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
