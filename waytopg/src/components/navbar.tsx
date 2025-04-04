@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Home, Search, Info, Phone, LogOut, User, Menu, X } from 'lucide-react'
+// import { Home, Search, Info, Phone, LogOut, User, Menu, X } from 'lucide-react'
+import { Home, Search, LogOut, User, Menu, X } from 'lucide-react'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -40,10 +41,10 @@ export function Navbar() {
         { to: '/user-dashboard', label: 'Profile', icon: User },
       ]
     : [
-        { to: '/', label: 'Home', icon: Home },
-        { to: '/listings', label: 'Listings', icon: Search },
-        { to: '/about', label: 'About', icon: Info },
-        { to: '/contact', label: 'Contact', icon: Phone },
+        { to: '/', label: 'Home', icon: Home }
+        // { to: '/listings', label: 'Listings', icon: Search },
+        // { to: '/about', label: 'About', icon: Info },
+        // { to: '/contact', label: 'Contact', icon: Phone },
       ]
 
   return (
