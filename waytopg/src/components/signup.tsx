@@ -65,7 +65,7 @@ const SignupPage: React.FC = () => {
       if (response.ok) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('userRole', data.role);
-        navigate(data.role === 'student' ? '/user-dashboard' : data.role === 'owner' ? '/owner-dashboard' : '/admin-dashboard');
+        navigate(data.role === 'student' ? '/accommodations' : data.role === 'owner' ? '/owner-dashboard' : '/admin-dashboard');
       } else {
         setErrors({ form: data.message });
       }

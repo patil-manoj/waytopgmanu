@@ -49,6 +49,11 @@ const AccommodationDetailPage: React.FC = () => {
       alert('Please select check-in and check-out dates');
       return;
     }
+    if (new Date(checkInDate) >= new Date(checkOutDate)) {
+      alert('Check-out date must be after check-in date');
+      return;
+    }
+    // Simulate booking process 
     alert(`Booking initiated for ${checkInDate} to ${checkOutDate}`);
   };
 
