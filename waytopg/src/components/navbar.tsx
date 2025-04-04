@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Home, Search, Info, Phone, LogOut, User, Building, Menu, X } from 'lucide-react'
+import { Home, Search, Info, Phone, LogOut, User, Menu, X } from 'lucide-react'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -18,7 +18,7 @@ export function Navbar() {
     window.location.href = '/login'
   }
 
-  const NavLink = ({ to , children, icon: Icon }) => (
+  const NavLink = ({ to, children, icon: Icon }: { to: string; children: React.ReactNode; icon: React.ElementType }) => (
     <Link
       to={to}
       className={`flex items-center px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200

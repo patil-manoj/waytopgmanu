@@ -8,7 +8,7 @@ import Navbar from './navbar';
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('student');
+  const role = 'student'; // Default role, can be changed based on your logic
   const [error, setError] = useState('');
   const navigate = useNavigate();
 

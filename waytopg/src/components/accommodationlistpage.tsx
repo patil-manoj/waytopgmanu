@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Button from '../components/Button';
-import { Search, MapPin, Star, DollarSign, Filter } from 'lucide-react';
+import { Search, MapPin, Star, DollarSign } from 'lucide-react';
 import Navbar from './navbar';
 
 interface Accommodation {

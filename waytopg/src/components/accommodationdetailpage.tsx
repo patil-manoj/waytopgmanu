@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 // import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Button from './Button';
-import { MapPin, Star, Wifi, Coffee, Tv, Users, Utensils, Car, Snowflake, Sun } from 'lucide-react';
+import { MapPin, Star, Wifi, Tv, Users, Utensils, Car, Snowflake, Sun } from 'lucide-react';
 import Navbar from './navbar';
 
 interface Accommodation {
