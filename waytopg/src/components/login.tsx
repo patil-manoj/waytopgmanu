@@ -58,7 +58,7 @@ const LoginPage: React.FC = () => {
       <Navbar />
       <main className="flex-grow flex items-center justify-center py-12">
         <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
-          <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Login to EcoStay</h2>
+          <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Login to Way2pg</h2>
           {error && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
               <span className="block sm:inline">{error}</span>
@@ -103,9 +103,6 @@ const LoginPage: React.FC = () => {
                 <option value="admin">Administrator</option>
               </select>
             </div> */}
-            <Button type="submit" variant="primary" size="large" className="w-full">
-              Login
-            </Button>
             <Button type="submit" variant="primary" size="large" className="w-full" disabled={isLoading}>
               {isLoading ? (
                 <>
