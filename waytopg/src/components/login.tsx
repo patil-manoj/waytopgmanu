@@ -4,16 +4,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Button from '../components/Button';
 import Navbar from './navbar';
+import { Loader } from 'lucide-react';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const role = 'student'; // Default role, can be changed based on your logic
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     setError('');
     try {
       const response = await fetch('https://waytopg-backend.onrender.com/api/auth/login', {
@@ -44,6 +47,9 @@ const LoginPage: React.FC = () => {
     } catch (error) {
       console.error('Login error:', error);
       setError('An error occurred during login');
+    }
+    finally {
+      setIsLoading(false);
     }
   };
 
@@ -99,6 +105,15 @@ const LoginPage: React.FC = () => {
             </div> */}
             <Button type="submit" variant="primary" size="large" className="w-full">
               Login
+            </Button>
+            <Button type="submit" variant="primary" size="large" className="w-full" disabled={isLoading}>
+              {isLoading ? (
+                <>
+                  <Loader className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" />
+                </>
+              ) : (
+                'Login'
+              )}
             </Button>
           </form>
           <div className="mt-4 text-center text-sm text-gray-600">
