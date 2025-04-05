@@ -35,7 +35,7 @@ const AdminLoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 via-blue-50 to-white flex flex-col">
       <Navbar />
       <main className="flex-grow flex items-center justify-center">
         <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">

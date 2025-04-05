@@ -14,7 +14,7 @@ const cities = [
   { name: "Mumbai", count: "500+", image: "https://images.unsplash.com/photo-1595658658481-d53d3f999875" },
   { name: "Bangalore", count: "450+", image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2" },
   { name: "Delhi", count: "400+", image: "https://images.unsplash.com/photo-1587474260584-136574528ed5" },
-  { name: "Pune", count: "350+", image: "https://images.unsplash.com/photo-1572096082124-9fcf1f86c5a9" }
+  { name: "Chennai", count: "350+", image: "https://images.unsplash.com/photo-1585999322539-fee6e6321a39" }
 ];
 
 const stats = [
@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
       {/* Hero Section */}
       <section 
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100"
+        className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-100 via-sky-100 to-emerald-100relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-300 via-blue-400 to-emerald-300"
       >
         <motion.div
           initial={{ opacity: 0 }}
@@ -61,7 +61,7 @@ const HomePage: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-transparent" />
         </motion.div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 -mt-20">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

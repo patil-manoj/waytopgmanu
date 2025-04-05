@@ -41,7 +41,7 @@ const OwnerDashboard: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 via-blue-50 to-white flex flex-col">
       <Navbar />
       <main className="flex-grow container mx-auto px-4 py-8">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Owner Dashboard</h2>
