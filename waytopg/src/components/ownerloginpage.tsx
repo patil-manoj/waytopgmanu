@@ -21,7 +21,7 @@ const OwnerLoginPage: React.FC = () => {
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem('token', data.token);
-        localStorage.setItem('userType', 'owner');
+        localStorage.setItem('userRole', 'owner');
         navigate('/owner-dashboard');
       } else {
         alert(data.message);
