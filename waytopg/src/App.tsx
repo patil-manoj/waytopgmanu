@@ -10,6 +10,8 @@ import UserDashboard from './components/userdashboard';
 import AccommodationListPage from './components/accommodationlistpage';
 import AccommodationDetailPage from './components/accommodationdetailpage';
 import AboutPage from './components/about';
+import AddAccommodationPage from './components/addaccommodation';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
 
@@ -22,9 +24,23 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/admin-login" element={<AdminLoginPage />} />
         <Route path="/owner-login" element={<OwnerLoginPage />} />
-        {/* <Route path="/add-accommodation" element={<AddAccommodationPage />} /> */}
+        <Route 
+          path="/add-accommodation" 
+          element={
+            <ProtectedRoute allowedRoles={['owner']}>
+              <AddAccommodationPage />
+            </ProtectedRoute>
+          } 
+        />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
-        <Route path="/owner-dashboard" element={<OwnerDashboard />} />
+        <Route 
+          path="/owner-dashboard" 
+          element={
+            <ProtectedRoute allowedRoles={['owner']}>
+              <OwnerDashboard />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/user-dashboard" element={<UserDashboard />} />
         <Route path="/accommodations" element={<AccommodationListPage />} />
         <Route path="/accommodation/:id" element={<AccommodationDetailPage />} />

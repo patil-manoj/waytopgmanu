@@ -2,20 +2,24 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 // import { Home, Search, Info, Phone, LogOut, User, Menu, X } from 'lucide-react'
-import { Home, Search, LogOut, User, Menu, X , Info } from 'lucide-react'
+import { Home, Search, LogOut, User, Menu, X , Plus, Info } from 'lucide-react'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [userRole, setUserRole] = useState<string | null>(null)
   const location = useLocation()
 
   useEffect(() => {
     const token = localStorage.getItem('token')
+    const storedUserRole = localStorage.getItem('userRole')
     setIsAuthenticated(!!token)
+    setUserRole(storedUserRole)
   }, [])
 
   const handleLogout = () => {
     localStorage.removeItem('token')
+    localStorage.removeItem('userRole')
     window.location.href = '/login'
   }
 
@@ -34,20 +38,29 @@ export function Navbar() {
     </Link>
   )
 
-  const navItems = isAuthenticated
-    ? [
-        { to: '/accommodations', label: 'Listings', icon: Search },
-        // { to: '/bookings', label: 'My Bookings', icon: Building },
-        { to: '/about', label: 'About', icon: Info },
-        { to: '/user-dashboard', label: 'Profile', icon: User },
-      ]
-    : [
+  const getNavItems = () => {
+    if (!isAuthenticated) {
+      return [
         { to: '/', label: 'Home', icon: Home },
         { to: '/about', label: 'About', icon: Info },
-        // { to: '/listings', label: 'Listings', icon: Search },
-        // { to: '/about', label: 'About', icon: Info },
-        // { to: '/contact', label: 'Contact', icon: Phone },
       ]
+    }
+
+    const items = [
+      { to: '/accommodations', label: 'Listings', icon: Search },
+      { to: '/about', label: 'About', icon: Info },
+    ]
+
+    if (userRole === 'owner') {
+      items.push({ to: '/add-accommodation', label: 'Add Accommodation', icon: Plus })
+    }
+
+    items.push({ to: `/${userRole}-dashboard`, label: 'Profile', icon: User })
+    
+    return items
+  }
+
+  const navItems = getNavItems()
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-10">
