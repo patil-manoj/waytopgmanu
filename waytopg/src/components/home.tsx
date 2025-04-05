@@ -25,7 +25,7 @@ const HomePage: React.FC = () => {
       <main className="flex-grow">
         <section className="hero bg-gradient-to-r from-green-500 to-green-600 text-white py-24">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Find Your Eco-Friendly<br />Student Home</h2>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Find Your Perfect<br />Student Home</h2>
             <p className="text-xl mb-10 max-w-2xl mx-auto">Discover sustainable and comfortable accommodations near your campus</p>
             <div className="max-w-3xl mx-auto bg-white rounded-full shadow-2xl flex items-center p-2">
               <input
@@ -42,7 +42,7 @@ const HomePage: React.FC = () => {
 
         <section className="featured-accommodations py-20">
           <div className="container mx-auto px-4">
-            <h3 className="text-3xl font-bold mb-12 text-center text-gray-800">Featured Eco-Accommodations</h3>
+            <h3 className="text-3xl font-bold mb-12 text-center text-gray-800">Featured Accommodations</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {featuredAccommodations.map((accommodation) => (
                 <div key={accommodation.id} className="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-105 hover:shadow-xl">
@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
 
         <section className="cta bg-gradient-to-r from-green-100 to-green-200 py-20">
           <div className="container mx-auto px-4 text-center">
-            <h3 className="text-4xl font-bold mb-6 text-gray-800">Ready to Find Your Eco-Friendly Home?</h3>
+            <h3 className="text-4xl font-bold mb-6 text-gray-800">Ready to Find Your Home?</h3>
             <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">Browse our extensive list of sustainable student accommodations and find the perfect match for you and the planet.</p>
             <Button variant="primary" size="large" onClick={handleclick}  className="inline-flex items-center">
               View All Listings
