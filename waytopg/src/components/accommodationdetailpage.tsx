@@ -73,7 +73,7 @@ const AccommodationDetailPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-white flex flex-col">
       <Navbar />
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -126,32 +126,32 @@ const AccommodationDetailPage: React.FC = () => {
             {/* Right column: Sticky booking information */}
             <div className="lg:col-span-1">
               <div className="sticky top-4 space-y-6">
-                <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-                  <h2 className="text-2xl font-bold mb-4 text-green-600">${accommodation.price}<span className="text-sm text-gray-600">/month</span></h2>
+                <div className="bg-gradient-to-br from-blue-600 to-purple-700 p-6 rounded-lg shadow-md text-white">
+                  <h2 className="text-2xl font-bold mb-4">${accommodation.price}<span className="text-sm text-blue-200">/month</span></h2>
                   <div className="mb-4">
-                    <label htmlFor="checkIn" className="block text-sm font-medium text-gray-700 mb-1">Check-in Date</label>
+                    <label htmlFor="checkIn" className="block text-sm font-medium text-blue-100 mb-1">Check-in Date</label>
                     <input
                       type="date"
                       id="checkIn"
                       value={checkInDate}
                       onChange={(e) => setCheckInDate(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 bg-white border-0 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                     />
                   </div>
                   <div className="mb-6">
-                    <label htmlFor="checkOut" className="block text-sm font-medium text-gray-700 mb-1">Check-out Date</label>
+                    <label htmlFor="checkOut" className="block text-sm font-medium text-blue-100 mb-1">Check-out Date</label>
                     <input
                       type="date"
                       id="checkOut"
                       value={checkOutDate}
                       onChange={(e) => setCheckOutDate(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 bg-white border-0 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                     />
                   </div>
-                  <Button  onClick={handleBooking} className="w-full bg-green-600 hover:bg-green-700 text-white">
+                  <Button onClick={handleBooking} className="w-full bg-white hover:bg-blue-50 text-blue-600">
                     Book Now
                   </Button>
-                  <p className="mt-4 text-sm text-gray-600 text-center">Free cancellation up to 48 hours before check-in</p>
+                  <p className="mt-4 text-sm text-blue-200 text-center">Free cancellation up to 48 hours before check-in</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md">
                   <h3 className="font-semibold mb-2">Why Book With Us?</h3>

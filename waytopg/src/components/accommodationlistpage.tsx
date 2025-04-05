@@ -54,12 +54,12 @@ const AccommodationListPage: React.FC = () => {
   }, [priceRange, searchTerm, selectedType, accommodations]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex flex-col">
       <Navbar />
       <main className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-8 text-center text-gray-800">Find Your Perfect Accommodation</h1>
         
-        <div className="mb-8 bg-white p-6 rounded-lg shadow-md">
+        <div className="mb-8 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 p-6 rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row gap-4 items-center">
             <div className="flex-grow w-full md:w-auto">
               <div className="relative">
@@ -68,13 +68,13 @@ const AccommodationListPage: React.FC = () => {
                   placeholder="Search accommodations..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full pl-10 pr-4 py-2 bg-white border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
             </div>
             <div className="flex items-center gap-4 w-full md:w-auto">
-              <DollarSign className="text-gray-400" />
+              <DollarSign className="text-white" />
               <input
                 type="range"
                 min="0"
@@ -84,13 +84,13 @@ const AccommodationListPage: React.FC = () => {
                 onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
                 className="w-full md:w-48"
               />
-              <span className="text-sm text-gray-600 whitespace-nowrap">Max ${priceRange[1]}</span>
+              <span className="text-sm text-white whitespace-nowrap">Max ${priceRange[1]}</span>
             </div>
             <div className="w-full md:w-auto">
               <select
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
-                className="w-full md:w-auto px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full md:w-auto px-3 py-2 bg-white border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
               >
                 <option value="">All Types</option>
                 <option value="Apartment">Apartment</option>

@@ -78,7 +78,7 @@ const SignupPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 via-blue-50 to-white flex flex-col">
       <Navbar />
       <main className="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
@@ -100,7 +100,7 @@ const SignupPage: React.FC = () => {
                 onChange={handleChange}
                 required
                 className={`mt-1 block w-full px-3 py-2 bg-white border rounded-md text-sm shadow-sm placeholder-gray-400
-                          focus:outline-none focus:ring-1 focus:ring-green-500 ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
+                          focus:outline-none focus:ring-1 focus:ring-purple-500 ${errors.name ? 'border-red-500' : 'border-gray-300 focus:border-blue-500'}`}
                 aria-invalid={errors.name ? 'true' : 'false'}
                 aria-describedby={errors.name ? 'name-error' : undefined}
               />
@@ -116,7 +116,7 @@ const SignupPage: React.FC = () => {
                 onChange={handleChange}
                 required
                 className={`mt-1 block w-full px-3 py-2 bg-white border rounded-md text-sm shadow-sm placeholder-gray-400
-                          focus:outline-none focus:ring-1 focus:ring-green-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                          focus:outline-none focus:ring-1 focus:ring-purple-500 ${errors.email ? 'border-red-500' : 'border-gray-300 focus:border-blue-500'}`}
                 aria-invalid={errors.email ? 'true' : 'false'}
                 aria-describedby={errors.email ? 'email-error' : undefined}
               />
@@ -132,7 +132,7 @@ const SignupPage: React.FC = () => {
                 onChange={handleChange}
                 required
                 className={`mt-1 block w-full px-3 py-2 bg-white border rounded-md text-sm shadow-sm placeholder-gray-400
-                          focus:outline-none focus:ring-1 focus:ring-green-500 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
+                          focus:outline-none focus:ring-1 focus:ring-purple-500 ${errors.password ? 'border-red-500' : 'border-gray-300 focus:border-blue-500'}`}
                 aria-invalid={errors.password ? 'true' : 'false'}
                 aria-describedby={errors.password ? 'password-error' : undefined}
               />
@@ -148,7 +148,7 @@ const SignupPage: React.FC = () => {
                 onChange={handleChange}
                 required
                 className={`mt-1 block w-full px-3 py-2 bg-white border rounded-md text-sm shadow-sm placeholder-gray-400
-                          focus:outline-none focus:ring-1 focus:ring-green-500 ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'}`}
+                          focus:outline-none focus:ring-1 focus:ring-purple-500 ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300 focus:border-blue-500'}`}
                 aria-invalid={errors.confirmPassword ? 'true' : 'false'}
                 aria-describedby={errors.confirmPassword ? 'confirmPassword-error' : undefined}
               />
@@ -162,7 +162,7 @@ const SignupPage: React.FC = () => {
                 value={formData.role}
                 onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm
-                          focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                          focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-blue-500"
               >
                 <option value="student">Student</option>
                 <option value="owner">Accommodation Owner</option>
@@ -181,7 +181,7 @@ const SignupPage: React.FC = () => {
                     onChange={handleChange}
                     required
                     className={`mt-1 block w-full px-3 py-2 bg-white border rounded-md text-sm shadow-sm placeholder-gray-400
-                              focus:outline-none focus:ring-1 focus:ring-green-500 ${errors.companyName ? 'border-red-500' : 'border-gray-300'}`}
+                              focus:outline-none focus:ring-1 focus:ring-purple-500 ${errors.companyName ? 'border-red-500' : 'border-gray-300 focus:border-blue-500'}`}
                     aria-invalid={errors.companyName ? 'true' : 'false'}
                     aria-describedby={errors.companyName ? 'companyName-error' : undefined}
                   />
@@ -197,7 +197,7 @@ const SignupPage: React.FC = () => {
                     onChange={handleChange}
                     required
                     className={`mt-1 block w-full px-3 py-2 bg-white border rounded-md text-sm shadow-sm placeholder-gray-400
-                              focus:outline-none focus:ring-1 focus:ring-green-500 ${errors.businessRegistration ? 'border-red-500' : 'border-gray-300'}`}
+                              focus:outline-none focus:ring-1 focus:ring-purple-500 ${errors.businessRegistration ? 'border-red-500' : 'border-gray-300 focus:border-blue-500'}`}
                     aria-invalid={errors.businessRegistration ? 'true' : 'false'}
                     aria-describedby={errors.businessRegistration ? 'businessRegistration-error' : undefined}
                   />
@@ -216,7 +216,7 @@ const SignupPage: React.FC = () => {
                   onChange={handleChange}
                   required
                   className={`mt-1 block w-full px-3 py-2 bg-white border rounded-md text-sm shadow-sm placeholder-gray-400
-                            focus:outline-none focus:ring-1 focus:ring-green-500 ${errors.adminCode ? 'border-red-500' : 'border-gray-300'}`}
+                            focus:outline-none focus:ring-1 focus:ring-purple-500 ${errors.adminCode ? 'border-red-500' : 'border-gray-300 focus:border-blue-500'}`}
                   aria-invalid={errors.adminCode ? 'true' : 'false'}
                   aria-describedby={errors.adminCode ? 'adminCode-error' : undefined}
                 />

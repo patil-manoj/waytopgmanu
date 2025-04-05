@@ -54,7 +54,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 via-blue-50 to-white flex flex-col">
       <Navbar />
       <main className="flex-grow flex items-center justify-center py-12">
         <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
@@ -74,7 +74,7 @@ const LoginPage: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
-                          focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                          focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-purple-500"
               />
             </div>
             <div>
@@ -86,7 +86,7 @@ const LoginPage: React.FC = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
-                          focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                          focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-purple-500"
               />
             </div>
             {/* <div>
