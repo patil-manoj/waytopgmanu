@@ -16,6 +16,8 @@ interface Accommodation {
   type: string;
 }
 
+
+
 const AccommodationListPage: React.FC = () => {
   const [accommodations, setAccommodations] = useState<Accommodation[]>([]);
   const [filteredAccommodations, setFilteredAccommodations] = useState<Accommodation[]>([]);
@@ -59,7 +61,7 @@ const AccommodationListPage: React.FC = () => {
       <main className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-8 text-center text-gray-800">Find Your Perfect Accommodation</h1>
         
-        <div className="mb-8 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 p-6 rounded-lg shadow-md">
+        <div className="mb-8 bg-white p-6 rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row gap-4 items-center">
             <div className="flex-grow w-full md:w-auto">
               <div className="relative">
@@ -74,7 +76,6 @@ const AccommodationListPage: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center gap-4 w-full md:w-auto">
-              <DollarSign className="text-white" />
               <input
                 type="range"
                 min="0"
@@ -84,7 +85,7 @@ const AccommodationListPage: React.FC = () => {
                 onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
                 className="w-full md:w-48"
               />
-              <span className="text-sm text-white whitespace-nowrap">Max ${priceRange[1]}</span>
+              <span className="text-sm text-black whitespace-nowrap">Max ${priceRange[1]}</span>
             </div>
             <div className="w-full md:w-auto">
               <select

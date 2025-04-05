@@ -48,12 +48,12 @@ const AboutPage: React.FC = () => {
       image: '/placeholder.svg?height=400&width=400',
     },
     {
-      name: 'John Doe',
+      name: 'lol',
       role: 'Head of Operations',
       image: '/placeholder.svg?height=400&width=400',
     },
     {
-      name: 'Jane Smith',
+      name: 'lol',
       role: 'Student Success Lead',
       image: '/placeholder.svg?height=400&width=400',
     },

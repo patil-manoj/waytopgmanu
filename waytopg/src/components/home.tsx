@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
       {/* Hero Section */}
       <section 
         ref={heroRef}
-        className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-100 via-sky-100 to-emerald-100relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-300 via-blue-400 to-emerald-300"
+        className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-300 via-blue-400 to-emerald-300"
       >
         <motion.div
           initial={{ opacity: 0 }}
