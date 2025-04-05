@@ -9,6 +9,7 @@ import OwnerDashboard from './components/ownerdashboard';
 import UserDashboard from './components/userdashboard';
 import AccommodationListPage from './components/accommodationlistpage';
 import AccommodationDetailPage from './components/accommodationdetailpage';
+import AboutPage from './components/about';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/user-dashboard" element={<UserDashboard />} />
         <Route path="/accommodations" element={<AccommodationListPage />} />
         <Route path="/accommodation/:id" element={<AccommodationDetailPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </Router>
     </>

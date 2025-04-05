@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 // import { Home, Search, Info, Phone, LogOut, User, Menu, X } from 'lucide-react'
-import { Home, Search, LogOut, User, Menu, X } from 'lucide-react'
+import { Home, Search, LogOut, User, Menu, X , Info } from 'lucide-react'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,10 +38,12 @@ export function Navbar() {
     ? [
         { to: '/accommodations', label: 'Listings', icon: Search },
         // { to: '/bookings', label: 'My Bookings', icon: Building },
+        { to: '/about', label: 'About', icon: Info },
         { to: '/user-dashboard', label: 'Profile', icon: User },
       ]
     : [
-        { to: '/', label: 'Home', icon: Home }
+        { to: '/', label: 'Home', icon: Home },
+        { to: '/about', label: 'About', icon: Info },
         // { to: '/listings', label: 'Listings', icon: Search },
         // { to: '/about', label: 'About', icon: Info },
         // { to: '/contact', label: 'Contact', icon: Phone },

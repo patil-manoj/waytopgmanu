@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <h4 className="text-2xl font-bold mb-4 text-green-400">Way2pg</h4>
-            <p className="text-gray-400">Finding the best eco-friendly homes for conscious students worldwide.</p>
+            <p className="text-gray-400">Finding the best homes for conscious students worldwide.</p>
           </div>
           <div>
             <h4 className="text-xl font-semibold mb-4">Quick Links</h4>
