@@ -11,13 +11,11 @@ dotenv.config();
 
 const app = express();
 
-// app.use(cors());
 app.use(cors({
-  origin: [
-    'https://waytopg.netlify.app',
-    'http://localhost:5173' // Keep local development URL
-  ],
-  credentials: true
+  origin: '*',  // Allow all origins during development
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Accept', 'Authorization']
 }));
 
 app.use(express.json());

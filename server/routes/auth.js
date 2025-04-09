@@ -10,13 +10,13 @@ const router = express.Router();
 
 // Stricter rate limiting
 const loginLimiter = rateLimit({
-  windowMs: 1 * 60 * 1000, // 15 minutes
+  windowMs: 15 * 60 * 1000, // 15 minutes
   max: 5, // limit each IP to 5 login attempts per window
   message: { message: 'Too many login attempts, please try again later' }
 });
 
 const signupLimiter = rateLimit({
-  windowMs: 1 * 60 * 1000, // 1 hour
+  windowMs: 60 * 60 * 1000, // 1 hour
   max: 3, // limit each IP to 3 signup attempts per hour
   message: { message: 'Too many signup attempts, please try again later' }
 });
@@ -153,8 +153,11 @@ router.post('/signup', signupLimiter, validateSignup, async (req, res) => {
 
 router.post('/login', loginLimiter, validateLogin, async (req, res) => {
   try {
+    console.log('Login attempt:', { email: req.body.email, role: req.body.role }); // Debug log
+    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      console.log('Validation errors:', errors.array()); // Debug log
       return res.status(400).json({ 
         success: false,
         errors: errors.array() 
@@ -167,25 +170,30 @@ router.post('/login', loginLimiter, validateLogin, async (req, res) => {
     const user = await User.findOne({ email });
     
     if (!user) {
+      console.log('User not found:', email); // Debug log
       return res.status(401).json({ 
         success: false,
         message: 'Invalid credentials' 
       });
     }
+
+    console.log('User found, checking role:', { expectedRole: role, actualRole: user.role }); // Debug log
 
     // Separate role check for better security
     if (user.role !== role) {
+      console.log('Role mismatch:', { expectedRole: role, actualRole: user.role }); // Debug log
       return res.status(401).json({ 
         success: false,
-        message: 'Invalid credentials' 
+        message: 'Invalid role for this account' 
       });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await user.comparePassword(password);
     if (!isMatch) {
+      console.log('Password mismatch for user:', email); // Debug log
       return res.status(401).json({ 
         success: false,
-        message: 'Invalid credentials' 
+        message: 'Invalid password' 
       });
     }
 

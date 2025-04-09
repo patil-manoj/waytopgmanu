@@ -63,10 +63,18 @@ const LoginPage: React.FC = () => {
         localStorage.setItem('userId', data.user?.id);
         localStorage.setItem('userName', data.user?.name);
 
+        // Add token to subsequent requests
+        const token = data.token;
+        if (token) {
+          // Set default Authorization header for all future requests
+          const defaultHeaders = new Headers();
+          defaultHeaders.append('Authorization', `Bearer ${token}`);
+        }
+
         // Redirect based on role
         switch (data.role) {
           case 'student':
-            navigate('/');
+            navigate('/accommodations');  // Changed from / to /accommodations for better UX
             break;
           case 'owner':
             navigate('/owner-dashboard');
@@ -75,10 +83,17 @@ const LoginPage: React.FC = () => {
             navigate('/admin-dashboard');
             break;
           default:
-            navigate('/');
+            navigate('/accommodations');
         }
       } else {
-        setError(data.message || 'Invalid credentials. Please check your email, password and role.');
+        // Handle specific error messages
+        if (data.message) {
+          setError(data.message);
+        } else if (data.errors && data.errors.length > 0) {
+          setError(data.errors[0].msg);
+        } else {
+          setError('Invalid credentials. Please check your email, password and role.');
+        }
       }
     } catch (error) {
       console.error('Login error:', error);
