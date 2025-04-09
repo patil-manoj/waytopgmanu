@@ -12,7 +12,10 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: '*',  // Allow all origins during development
+  origin :[
+    'http://localhost:5173', // React app
+    'https://waytopg.netlify.app/' // Production URL
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Accept', 'Authorization']
@@ -33,3 +36,4 @@ const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
