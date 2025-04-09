@@ -10,14 +10,14 @@ const router = express.Router();
 
 // Stricter rate limiting
 const loginLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // limit each IP to 5 login attempts per window
+  windowMs: 1 * 60 * 1000, // 1 minutes
+  max: 15, // limit each IP to 15 login attempts per window
   message: { message: 'Too many login attempts, please try again later' }
 });
 
 const signupLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000, // 1 hour
-  max: 3, // limit each IP to 3 signup attempts per hour
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 13, // limit each IP to 13 signup attempts per hour
   message: { message: 'Too many signup attempts, please try again later' }
 });
 
